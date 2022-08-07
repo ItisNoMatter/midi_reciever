@@ -14,7 +14,7 @@ class Message:
 
 
 
-class _MIDI_INPUT_DEVICE:#pylanceを黙らせるための偽クラス,
+class _MIDI_INPUT_DEVICE:#pylanceを黙らせるための偽クラス。関数の型ヒントはrtmidi._MidiInに準拠
     def __init__(self) -> None:
         raise Exception("""
         偽クラスのインスタンスが作られている。
@@ -31,11 +31,11 @@ class _MIDI_INPUT_DEVICE:#pylanceを黙らせるための偽クラス,
     def __exit__(self):
         pass
 def MidiIn() -> _MIDI_INPUT_DEVICE:#pylanceを黙らせるための関数、型ヒントは嘘
-    return rtmidi.MidiIn()
+    return rtmidi.MidiIn()# pyright: ignore　rtmidiは本体のところCythonだからpylanceで補完はできない
 
 
 if __name__ == "__main__":
-    midiin = rtmidi.MidiIn()
+    midiin = MidiIn()
     port = midiin.open_port()
     print(type(midiin))
     with port:
