@@ -2,7 +2,7 @@ import time
 import threading
 import sys
 
-from visualize import StdPrint, Visualizer
+from visualize import Visualizer
 
 class Metronome(threading.Thread):
     def __init__(self,bpm:int=60,timesig:int=4,ppq:int=4) -> None:
@@ -57,8 +57,6 @@ class Metronome(threading.Thread):
 if __name__ == "__main__":
     m = Metronome(bpm=60,timesig=4)
     m.start()
-    a = StdPrint()
-    m.atatch_visualizer(StdPrint())
     try:
         while True:
             time.sleep(0.01)
