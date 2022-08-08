@@ -63,8 +63,8 @@ if __name__ == "__main__":
         while True:
             time.sleep(0.01)
             #print("\r"+ " beat:"str(m.current_beat),end="")
-            #print("\rbar: {} beat: {} tick: {:03}".format(m.currrent_bar,m.current_beat,m.current_tick))
-            #print("\rerror_time(s/beat): {} ".format(m.interval-1) +"\033[2A",end="")
+            print("\rbar: {} beat: {} tick: {:03}".format(m.currrent_bar,m.current_beat,m.current_tick))
+            print("\rerror_time(s/beat): {} ".format(m.interval-1) +"\033[2A",end="")
             #print()
     except KeyboardInterrupt:
         sys.exit()
