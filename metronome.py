@@ -23,7 +23,6 @@ class Metronome(threading.Thread):
     def atatch_visualizer(self,v:Visualizer):
         self.visualizer = v
     def run(self):
-        print(self.timesig)
         while True:
             time.sleep((self.bpm/60)/self._ppq)
             self._increment_tick()
@@ -55,7 +54,7 @@ class Metronome(threading.Thread):
         pass
 
 if __name__ == "__main__":
-    m = Metronome(bpm=60,timesig=4)
+    m = Metronome(bpm=60,timesig=4,ppq=4)
     m.start()
     try:
         while True:
@@ -63,6 +62,6 @@ if __name__ == "__main__":
             #print("\r"+ " beat:"str(m.current_beat),end="")
             print("\rbar: {} beat: {} tick: {:03}".format(m.currrent_bar,m.current_beat,m.current_tick))
             print("\rerror_time(s/beat): {} ".format(m.interval-1) +"\033[2A",end="")
-            #print()
+            print()
     except KeyboardInterrupt:
         sys.exit()
