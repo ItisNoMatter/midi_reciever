@@ -17,5 +17,5 @@ class StdPrint(Visualizer):
         return super().print_log(message)
     def print_beat(self, bar, beat):
         os.system("cls")
-        print("bar:{} beat{}".format(bar,beat))
+        print("bar:{} beat:{}".format(bar,beat))
         return super().print_beat(bar, beat)
