@@ -1,18 +1,22 @@
+from dataclasses import dataclass
 import time
 import threading
 import sys
 
 from visualize import Visualizer
+
+@dataclass(frozen=True)
 class BeatTime:
-    def __init__(self,time,bar,b4,b16=0) -> None:
-        self.beat:tuple = (bar,b4,b16)
-        self.time:float = time
-        
+    time:float
+    beat4:int
+    beat16:int = 0
+
 class Metronome(threading.Thread):
     def __init__(self,bpm:int=60,timesig:int=4,ppq:int=4) -> None:
         super(Metronome,self).__init__()
         self.daemon = True
         #immutable(にしたい)
+        self._start_time:float
         self.bpm:int = bpm
         self.timesig:int = timesig
         self._ppq:int = ppq #Pulses per quarter note 
@@ -27,6 +31,7 @@ class Metronome(threading.Thread):
     def atatch_visualizer(self,v:Visualizer):
         self.visualizer = v
     def run(self):
+        self._start_time = time.time()
         while True:
             time.sleep((self.bpm/60)/self._ppq)
             self._increment_tick()
@@ -51,12 +56,13 @@ class Metronome(threading.Thread):
             self.current_beat = 1
             return
         self.current_beat += 1
-
     def set_timesig(self):
         pass
     def pause(self):
         pass
-
+    def get_beat_time(self) ->BeatTime:
+        passtime = time.time() - self._start_time
+        return BeatTime(passtime,self.current_beat)#TODO beat16に対応
 if __name__ == "__main__":
     m = Metronome(bpm=60,timesig=4,ppq=4)
     m.start()
