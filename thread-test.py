@@ -18,8 +18,9 @@ if __name__ == "__main__":
                 data = port.get_message()
                 if data:
                     m = Message(data)
-                    note = Note(metronome.get_beat_time(),m.note_num)
-                    score.add_note(note)
+                    if m.status == "Note:ON":
+                        note = Note(metronome.get_beat_time(),m.note_num)
+                        score.add_note(note)
                     print("status:{} note_num:{} velocity:{}".format(m.status,m.note_num,m.velocity))
                     
         except KeyboardInterrupt:
