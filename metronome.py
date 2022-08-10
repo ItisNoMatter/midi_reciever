@@ -3,7 +3,11 @@ import threading
 import sys
 
 from visualize import Visualizer
-
+class BeatTime:
+    def __init__(self,time,bar,b4,b16=0) -> None:
+        self.beat:tuple = (bar,b4,b16)
+        self.time:float = time
+        
 class Metronome(threading.Thread):
     def __init__(self,bpm:int=60,timesig:int=4,ppq:int=4) -> None:
         super(Metronome,self).__init__()
