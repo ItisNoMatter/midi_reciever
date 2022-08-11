@@ -1,0 +1,3 @@
+[submodule "bebopnet-code"]
+	path = bebopnet-code
+	url = https://github.com/ItisNoMatter/bebopnet-code
