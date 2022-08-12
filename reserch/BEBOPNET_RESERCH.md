@@ -1,0 +1,16 @@
+# 吐くファイル形式
+
+```
+$ jazz_rnn/B_next_note_prediction/generate_from_xml.py --model_dir results/training_results/model_lstm --checkpoint model_lstm.pt --verbose
+```
+これを実行すると、results/samplesに↓が出力される。
+```
+ls results/samples/
+Fly_me_to_the_moon_2022_08_12_124436_552593_neglikelihood_1.96.mp3
+Fly_me_to_the_moon_2022_08_12_124436_552593_neglikelihood_1.96_no_head.xml
+Fly_me_to_the_moon_2022_08_12_124436_552593_neglikelihood_1.96_swing.mp3
+Fly_me_to_the_moon_2022_08_12_124436_552593_neglikelihood_1.96_swing_with_chords.xml
+Fly_me_to_the_moon_2022_08_12_124436_552593_neglikelihood_1.96_swing.xml
+Fly_me_to_the_moon_2022_08_12_124436_552593_neglikelihood_1.96_with_chords.xml
+Fly_me_to_the_moon_2022_08_12_124436_552593_neglikelihood_1.96.xml
+```
